@@ -1,18 +1,14 @@
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'react' or its corresponding ty... Remove this comment to see the full error message
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'react-draggable' or its corres... Remove this comment to see the full error message
 import Draggable from "react-draggable";
 // @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'uuid' or its corresponding typ... Remove this comment to see the full error message
 import { v4 as uuidv4 } from "uuid";
-// @ts-expect-error ts-migrate(2580) FIXME: Cannot find name 'require'. Do you need to install... Remove this comment to see the full error message
-var randomColor = require("randomcolor");
+import randomColor from "randomcolor";
 
-function App() {
-  const [item, setItem] = useState("");
-  const [items, setItems] = useState(
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'string | null' is not assignable... Remove this comment to see the full error message
-    JSON.parse(localStorage.getItem("items")) || []
+export default function App() {
+  const [item, setItem] = React.useState("");
+  const [items, setItems] = React.useState(
+    JSON.parse(localStorage.getItem("items")!) || []
   );
 
   const newitem = () => {
@@ -40,7 +36,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
@@ -55,24 +51,18 @@ function App() {
   };
 
   return (
-    // @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
     <div className="App">
-      {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
       <div id="new-item">
-        {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
         <input
           value={item}
           onChange={(e: any) => setItem(e.target.value)}
           placeholder="Enter something..."
           onKeyPress={(e: any) => keyPress(e)}
         />
-        {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
         <button onClick={newitem}>ENTER</button>
-      {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
       </div>
       {items.map((item: any, index: any) => {
         return (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Draggable
             key={item.id}
             defaultPosition={item.defaultPos}
@@ -80,22 +70,15 @@ function App() {
               updatePos(data, index);
             }}
           >
-            {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
             <div style={{ backgroundColor: item.color }} className="box">
               {`${item.item}`}
-              {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
               <button id="delete" onClick={(e: any) => deleteNote(item.id)}>
                 X
-              {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
               </button>
-            {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
             </div>
           </Draggable>
         );
       })}
-    {/* @ts-expect-error ts-migrate(7026) FIXME: JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message */}
     </div>
   );
 }
-
-export default App;
