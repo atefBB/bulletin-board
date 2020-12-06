@@ -10,7 +10,7 @@ export default function App() {
     JSON.parse(localStorage.getItem("items")!) || []
   );
 
-  const newitem = () => {
+  const addNewItem = () => {
     if (item.trim() !== "") {
       const newitem = {
         id: uuidv4(),
@@ -31,7 +31,7 @@ export default function App() {
   const keyPress = (event: any) => {
     var code = event.keyCode || event.which;
     if (code === 13) {
-      newitem();
+      addNewItem();
     }
   };
 
@@ -58,7 +58,7 @@ export default function App() {
           placeholder="Enter something..."
           onKeyPress={(e: any) => keyPress(e)}
         />
-        <button onClick={newitem}>ENTER</button>
+        <button onClick={addNewItem}>ENTER</button>
       </div>
       {items.map((item: any, index: any) => {
         return (
