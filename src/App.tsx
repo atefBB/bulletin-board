@@ -16,9 +16,9 @@ export default function App() {
         id: uuidv4(),
         item: item,
         color: randomColor({
-          luminosity: "light",
+          luminosity: "light"
         }),
-        defaultPos: { x: 100, y: 0 },
+        defaultPos: { x: 100, y: 0 }
       };
       setItems((items: any) => [...items, newitem]);
       setItem("");
@@ -58,8 +58,8 @@ export default function App() {
           placeholder="Enter something..."
           onKeyPress={(e: any) => keyPress(e)}
         />
-        <button onClick={addNewItem}>ENTER</button>
       </div>
+      <button onClick={addNewItem}>ENTER</button>
       {items.map((item: any, index: any) => {
         return (
           <Draggable
