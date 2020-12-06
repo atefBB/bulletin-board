@@ -55,11 +55,11 @@ export default function App() {
         <input
           value={item}
           onChange={(e: any) => setItem(e.target.value)}
-          placeholder="Enter something..."
+          placeholder="اكتب شيئا"
           onKeyPress={(e: any) => keyPress(e)}
         />
       </div>
-      <button onClick={addNewItem}>ENTER</button>
+      <button onClick={addNewItem}>إضافة</button>
       {items.map((item: any, index: any) => {
         return (
           <Draggable

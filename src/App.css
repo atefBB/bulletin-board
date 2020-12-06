@@ -16,6 +16,7 @@
 }
 
 body {
+  direction: rtl;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -64,7 +65,7 @@ button:hover {
   font-size: 0.6em;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   background-color: transparent;
   border: none;
 }
