@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Draggable from "react-draggable";
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'uuid' or its corresponding typ... Remove this comment to see the full error message
 import { v4 as uuidv4 } from "uuid";
 import randomColor from "randomcolor";
 
