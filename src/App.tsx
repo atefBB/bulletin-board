@@ -1,8 +1,9 @@
 import React from "react";
-import "./App.css";
 import Draggable from "react-draggable";
 import { v4 as uuidv4 } from "uuid";
 import randomColor from "randomcolor";
+
+import "./App.css";
 
 export default function App() {
   const [item, setItem] = React.useState("");
@@ -10,7 +11,7 @@ export default function App() {
     JSON.parse(localStorage.getItem("items")!) || []
   );
 
-  const addNewItem = () => {
+  function addNewItem() {
     if (item.trim() !== "") {
       const newitem = {
         id: uuidv4(),
@@ -18,7 +19,7 @@ export default function App() {
         color: randomColor({
           luminosity: "light"
         }),
-        defaultPos: { x: 100, y: 0 }
+        defaultPos: { x: 150, y: 10 }
       };
       setItems((items: any) => [...items, newitem]);
       setItem("");
@@ -26,28 +27,28 @@ export default function App() {
       alert("Enter a item");
       setItem("");
     }
-  };
+  }
 
-  const keyPress = (event: any) => {
+  function addNewItemOnKeyPress(event: any) {
     var code = event.keyCode || event.which;
     if (code === 13) {
       addNewItem();
     }
-  };
+  }
+
+  function updatePos(data: any, index: any) {
+    let newArr = [...items];
+    newArr[index].defaultPos = { x: data.x, y: data.y };
+    setItems(newArr);
+  }
+
+  function deleteNote(id: any) {
+    setItems(items.filter((item: any) => item.id !== id));
+  }
 
   React.useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
-
-  const updatePos = (data: any, index: any) => {
-    let newArr = [...items];
-    newArr[index].defaultPos = { x: data.x, y: data.y };
-    setItems(newArr);
-  };
-
-  const deleteNote = (id: any) => {
-    setItems(items.filter((item: any) => item.id !== id));
-  };
 
   return (
     <div className="App">
@@ -56,7 +57,7 @@ export default function App() {
           value={item}
           onChange={(e: any) => setItem(e.target.value)}
           placeholder="اكتب شيئا"
-          onKeyPress={(e: any) => keyPress(e)}
+          onKeyPress={(e: any) => addNewItemOnKeyPress(e)}
         />
       </div>
       <button onClick={addNewItem}>إضافة</button>
@@ -70,10 +71,10 @@ export default function App() {
             }}
           >
             <div style={{ backgroundColor: item.color }} className="box">
-              {`${item.item}`}
               <button id="delete" onClick={(e: any) => deleteNote(item.id)}>
                 X
               </button>
+              <span>{item.item}</span>
             </div>
           </Draggable>
         );
