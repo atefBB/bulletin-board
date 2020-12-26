@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
 }
 
 .box {
@@ -68,6 +72,7 @@ button:hover {
   left: 0;
   background-color: transparent;
   border: none;
+  margin: 0;
 }
 
 #delete:hover {
