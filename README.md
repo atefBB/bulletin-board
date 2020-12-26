@@ -1,10 +1,10 @@
-## Bulletin Board
+## Arabic version of Bulletin Board
 
 <img src = "./src/image.PNG">
 
 ### Description
 
-A simple app to write anything on the board. The notes will be saved to localStorage so don't write anything confidential or private on it. Built for a react draggable tutorial.
+A simple app to write anything on the board. The notes will be saved to `localStorage` so don't write anything confidential or private on it.
 
 Use it for:
 
